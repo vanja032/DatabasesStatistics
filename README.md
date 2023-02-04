@@ -2,16 +2,17 @@
 ### Measuring real statisctics from different database management systems
 
 - ### MySql database table:
-  ##### Create table SQL database query
+  ##### Create table SQL database query:
   ```CREATE TABLE users(userid INT NOT NULL AUTO_INCREMENT, fname VARCHAR(255), lname VARCHAR(255), email VARCHAR(255), gender VARCHAR(30), PRIMARY KEY(userid));```
 
 - ### Postgres database table:
-  ##### Create table SQL database query
+  ##### Create table SQL database query:
   ```CREATE TABLE users(userid SERIAL, fname VARCHAR(255), lname VARCHAR(255), email VARCHAR(255), gender VARCHAR(30), PRIMARY KEY(userid));```
 
 - ### Mongo database:
-  ##### Create mongo user:
+  ##### Create mongo database:
     ```use usersdb```
+  ##### Create mongo user:
     ```
     db.createUser({
         user: "root",
@@ -29,7 +30,7 @@
     ```
 
 - ### Redis database:
-    Use <key, value> format
+    Use <***key***, ***value***> format
     ```
     <index, {
         "fname": "<user first name>",
