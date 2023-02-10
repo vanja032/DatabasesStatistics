@@ -23,6 +23,16 @@
       }
     )
     ```
+  ##### Update mongo user for database:
+    ```
+    db.updateUser("root",{
+        pwd: "root",
+        roles: [
+           { role: "readWrite", db: "usersdb" }
+        ]
+      }
+    )
+    ```
     
   ##### Create mongo collection:
     ```
@@ -82,11 +92,45 @@
     **9.** *Preview the blockchain table **users** on the blockchain account*
     ```cline get table <account name> <account name> users```
     
+    **10.** *Get number of rows for blockchain table **users** on the blockchain account*
+    ```cline get scope <account name> -t users```
+    
 #### Install required python3 libraries
 - MySql connector: **pip3 install mysql-connector-python**
 - PostgreSql connector: **pip3 install psycopg2-binary**
 - MongoDB connector: **pip3 install pymongo**
 - Redis library: **pip3 install redis**
 
+### Running scripts:
+ - ### Run script for creating users and store them in users.json
+  ```
+  python3 create_users.py
+  ```
+  - ### Run script for filling the databases with users stored in users.json
+  ```
+  python3 databases_fill_data.py <parameter>
+  ```
+  **Use next parameters for different databases:**
+  ```
+  mysql [for MySql database]
+  psql [for Postgres database]
+  mongos [for Mongo database]
+  redis [for Redis database]
+  inery [for Inery blockchain database]
+  ```
+  - ### Run script for statistics to test the databases perfomanses and store results in statistics.json
+  ```
+  python3 databases_statistics.py <parameter>
+  ```
+  **Use next parameters for different databases:**
+  ```
+  mysql [for MySql database]
+  psql [for Postgres database]
+  mongos [for Mongo database]
+  redis [for Redis database]
+  inery [for Inery blockchain database]
+  all [for all databases together]
+  ```
+  
 ### Perfomanse testing results:
 ![database statistics](DatabasesPefomanseTesting.png)
