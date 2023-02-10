@@ -173,3 +173,6 @@
 }
 ```
 ![database statistics](DatabasesPefomanseTesting.png)
+
+### Conclusion:
+[Databases Pefomanse Testing](DatabasesPefomanseTesting.pdf)
