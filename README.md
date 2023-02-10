@@ -87,3 +87,6 @@
 - PostgreSql connector: **pip3 install psycopg2-binary**
 - MongoDB connector: **pip3 install pymongo**
 - Redis library: **pip3 install redis**
+
+### Perfomanse testing results:
+![database statistics](DatabasesPefomanseTesting.png)
