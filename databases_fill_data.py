@@ -4,6 +4,8 @@ from pymongo import MongoClient
 import redis
 import json
 import sys
+import subprocess
+import time
 
 def fill_mysql():
     try:
@@ -87,6 +89,16 @@ def fill_redis():
         print(ex)
         return False
 
+def fill_blockchain_database(account_name, action_name):
+    with open("users.json", "r") as file:
+        users = json.loads(file.read())
+        subprocess.run(["cline", "wallet", "unlock", "--password", "<blockchain wallet password>"])
+        for user in users:
+            try:
+                subprocess.run(["cline", "push", "action", account_name, action_name, "[\"" + user["fname"] + "\", \"" + user["lname"] + "\", \"" + user["email"] + "\", \"" + user["gender"] + "\"]", "-p", account_name + "@active"])
+            except:
+                pass
+            #time.sleep(0.1)
 
 if __name__ == "__main__":
     if sys.argv[1] == "mysql":
@@ -97,5 +109,7 @@ if __name__ == "__main__":
         fill_mongos("usersdb", "users")
     elif sys.argv[1] == "redis":
         fill_redis()
+    elif sys.argv[1] == "inery":
+        fill_blockchain_database("dbtest", "insert")
     else:
         print(f"Wrong argument code {sys.argv[1]}.")
