@@ -74,25 +74,30 @@
     **5.** *Set value contract on the blockchain account*
     ```cline set contract dbtest ./ dbtest.wasm dbtest.abi```
     
-    **6.** *Push **insert** action to the value contract on the blockchain*
+    **6.** *Buy resources for the blockchain account*
+    ```
+    cline push action inery buyresources '["inery", "<account name>", "<number of MBs> INR"]' -p inery@active
+    ```
+    
+    **7.** *Push **insert** action to the value contract on the blockchain*
     ```
     cline push action <account name> insert '["<user first name>", "<user last name>", "<user email>", "<user gender>"]' -p <account name>@active
     ```
     
-    **7.** *Push **update** action to the value contract on the blockchain*
+    **8.** *Push **update** action to the value contract on the blockchain*
     ```
     cline push action <account name> update '[<user id>, "<user first name>", "<user last name>", "<user email>", "<user gender>"]' -p <account name>@active
     ```
     
-    **8.** *Push **delete** action to the value contract on the blockchain*
+    **9.** *Push **delete** action to the value contract on the blockchain*
     ```
     cline push action <account name> remove '[<user id>]' -p <account name>@active
     ```
     
-    **9.** *Preview the blockchain table **users** on the blockchain account*
+    **10.** *Preview the blockchain table **users** on the blockchain account*
     ```cline get table <account name> <account name> users```
     
-    **10.** *Get number of rows for blockchain table **users** on the blockchain account*
+    **11.** *Get number of rows for blockchain table **users** on the blockchain account*
     ```cline get scope <account name> -t users```
     
 #### Install required python3 libraries
