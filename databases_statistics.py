@@ -142,6 +142,11 @@ def get_redis(st_data):
         temp = {}
 
         start = time.time()
+        result = rd.get(0)
+        end = time.time()
+        temp["1"] = end - start
+        
+        start = time.time()
         for i in range(100000):
             result = rd.get(i)
         end = time.time()
@@ -175,6 +180,13 @@ def get_blockchain_database(account_name, table_name, st_data):
         try:
             temp = {}
 
+            start = time.time()
+            i = 0
+            result = subprocess.Popen(["cline", "get", "table", account_name, account_name, table_name, "--limit", "1"], stdout=subprocess.PIPE).communicate()[0]
+            #result = json.loads(result)
+            end = time.time()
+            temp["1"] = end - start
+            
             start = time.time()
             i = 0
             while i < 100000:
